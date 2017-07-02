@@ -26,6 +26,25 @@ def postOrderPrint(root):
         postOrderPrint(root.right)
     print root.val
 
+def printLevelOrder(root):
+    for level in range(1, height_tree(root) + 1):
+        printGivenLevel(root, level)
+
+def printGivenLevel(root,level):
+    if root is None:
+        return
+    if level == 1:
+        print root.val
+    if level > 1:
+        printGivenLevel(root.left, level-1)
+        printGivenLevel(root.right, level-1)
+
+def height_tree(root):
+    if root == None:
+        return 0
+    else:
+        return max(height_tree(root.left),height_tree(root.right)) + 1
+
 #main
 
 #
@@ -45,4 +64,6 @@ root.left.right = Node(5)
 
 #preOrderPrint(root)
 
-postOrderPrint(root)
+#postOrderPrint(root)
+
+printLevelOrder(root)
