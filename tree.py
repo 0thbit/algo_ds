@@ -45,6 +45,25 @@ def height_tree(root):
     else:
         return max(height_tree(root.left),height_tree(root.right)) + 1
 
+
+def inOrderPrint_recurless(root):
+    stack = []
+    current = root
+    done = 0
+    if current == None and len(stack) == 0:
+        return
+    else:
+        while(not done):
+            if current is not None:
+                stack.append(current)
+                current = current.left
+            else:
+                if len(stack) > 0:
+                    current = stack.pop()
+                    print current.val
+                    current = current.right
+                else:
+                    done = 1
 #main
 
 #
@@ -66,4 +85,7 @@ root.left.right = Node(5)
 
 #postOrderPrint(root)
 
-printLevelOrder(root)
+#printLevelOrder(root)
+
+inOrderPrint_recurless(root)
+
