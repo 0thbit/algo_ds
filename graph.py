@@ -18,11 +18,25 @@ class Graph:
         visited[node-1] = True
         while Q:
             tmp = Q.pop(0)
-            print tmp
+            print(tmp)
             for n in self.adjList[tmp]:
                 if visited[n-1] is False:
                     Q.append(n)
                     visited[n-1] = True
+
+    def dfs(self,src):
+        visited = [False] * (self.V)
+        st = []
+        st.append(src)
+        visited[src-1] = True
+
+        while st:
+            curr_v = st.pop()
+            print(curr_v)
+            for adj_v in self.adjList[curr_v]:
+                if not visited[adj_v-1]:
+                    st.append(adj_v)
+                    visited[adj_v - 1] = True
 
 
 #main
